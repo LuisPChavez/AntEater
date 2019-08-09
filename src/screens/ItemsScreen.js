@@ -3,6 +3,9 @@ import {ScrollView, StyleSheet, View, TextInput} from "react-native";
 import {MenuItem} from "../components/MenuItem";
 
 export default class ItemsScreen extends React.Component {
+  static navigationOptions = {
+    headerTitle: "LOGO"
+  };
   render() {
     return (
       <View style={{flex: 1, backgroundColor: "#FCFCFC"}}>
@@ -15,7 +18,9 @@ export default class ItemsScreen extends React.Component {
               borderColor: "black",
               marginTop: 15,
               padding: 10,
-              fontSize: 17
+              fontSize: 17,
+              backgroundColor: "white",
+              borderRadius: 4
             }}
             placeholder="🔍  Search"
             clearButtonMode="always"

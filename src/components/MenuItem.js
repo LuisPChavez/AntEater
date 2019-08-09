@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Text, View, TouchableOpacity} from "react-native";
+import {Text, View, TouchableOpacity, Image} from "react-native";
 
 export class MenuItem extends Component {
   render() {
@@ -7,16 +7,17 @@ export class MenuItem extends Component {
     return (
       <TouchableOpacity
         style={{
-          height: 150,
+          height: 130,
           flexDirection: "row",
           borderBottomColor: "grey",
           borderBottomWidth: 0.2
         }}
       >
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-          <View
+          <Image
+            source={require("../assets/banhmi.jpg")}
             style={{
-              backgroundColor: "black",
+              backgroundColor: "white",
               height: 100,
               width: 90,
               borderRadius: 10,
