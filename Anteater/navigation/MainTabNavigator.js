@@ -1,60 +1,40 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import {Platform} from "react-native";
+import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarIcon from "../components/TabBarIcon";
+import MapScreen from "../screens/HomeScreen";
+import LinksScreen from "../screens/LinksScreen";
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const MapStack = createStackNavigator({
+  Map: MapScreen
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
+MapStack.navigationOptions = {
+  tabBarLabel: "Map",
+  tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+      name={Platform.OS === "ios" ? `ios-map` : "android-map"}
     />
-  ),
+  )
 };
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+  Links: LinksScreen
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
+  tabBarLabel: "Items",
+  tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === "ios" ? "ios-list" : "md-link"}
     />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
-  ),
+  )
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  MapStack,
+  LinksStack
 });
