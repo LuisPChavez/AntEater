@@ -23,7 +23,12 @@ export class MenuItem extends Component {
           />
         </View>
         <View style={{flex: 2}}>
-          <Text>Part 2</Text>
+          <View style={{flexDirection: "row"}}>
+            <Text style={{margin: 20, flex: 2, fontSize: 18}}>Event Name</Text>
+            <Text style={{flex: 1, margin: 20}}>$$</Text>
+          </View>
+          <Text style={{margin: 20}}>Club Name</Text>
+          <Text style={{margin: 5}}>TEST</Text>
         </View>
       </View>
     );
