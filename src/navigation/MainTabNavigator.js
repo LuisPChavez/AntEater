@@ -4,7 +4,7 @@ import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
 import MapScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
+import ItemsScreen from "../screens/ItemsScreen";
 
 const MapStack = createStackNavigator({
   Map: MapScreen
@@ -20,11 +20,11 @@ MapStack.navigationOptions = {
   )
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen
+const ItemsStack = createStackNavigator({
+  Items: ItemsScreen
 });
 
-LinksStack.navigationOptions = {
+ItemsStack.navigationOptions = {
   tabBarLabel: "Items",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
@@ -35,6 +35,6 @@ LinksStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  MapStack,
-  LinksStack
+  ItemsStack,
+  MapStack
 });

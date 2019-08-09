@@ -1,7 +1,0 @@
-This is my test file! With a change.
-another edit
-another edit boy
-ssh is gonna work
-wierd stuff goin on
-edit
-on my branch
