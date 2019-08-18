@@ -2,9 +2,12 @@ import React, {PureComponent} from "react";
 import {Text, View, SafeAreaView} from "react-native";
 
 export default class ProfileScreen extends PureComponent {
+  static navigationOptions = {
+    header: null
+  };
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: "#E8E8E8"}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: "#DEE2E2"}}>
         <Text
           style={{
             fontSize: 28,

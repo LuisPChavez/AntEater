@@ -14,8 +14,31 @@ export default class ItemsScreen extends React.Component {
     header: null
   };
   render() {
+    var data = require("../data");
+
+    allEvents = [];
+
+    data.data.map(org => {
+      org.events.map(eventItem => <MenuItem title={eventItem.name} />);
+    });
+
+    for (let i = 0; i < data.data.length; ++i) {
+      for (let j = 0; j < data.data[i].events.length; ++j) {
+        allEvents.push(
+          <MenuItem
+            title={data.data[i].events[j].title}
+            pricing={data.data[i].events[j].pricing}
+            org={data.data[i].name}
+            location={data.data[i].events[j].location}
+            key={data.data[i].events[j].key}
+          />
+        );
+      }
+    }
+    console.log(allEvents);
+
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: "#E8E8E8"}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: "#DEE2E2"}}>
         <Text
           style={{
             fontSize: 28,
@@ -25,7 +48,7 @@ export default class ItemsScreen extends React.Component {
             marginTop: 20
           }}
         >
-          Items
+          Events
         </Text>
         {/* <View style={{justifyContent: "center", alignItems: "center"}}>
           <TextInput
@@ -46,12 +69,9 @@ export default class ItemsScreen extends React.Component {
           />
         </View> */}
         <ScrollView style={styles.container}>
-          <MenuItem
-            title={"5$ Banh Mi"}
-            pricing={"$"}
-            org={"ASUCI"}
-            location={"Ring Road"}
-          />
+          {allEvents.map(item => {
+            return item;
+          })}
         </ScrollView>
       </SafeAreaView>
     );

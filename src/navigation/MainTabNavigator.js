@@ -12,11 +12,11 @@ const MapStack = createStackNavigator({
 });
 
 MapStack.navigationOptions = {
-  tabBarLabel: "Map",
+  tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? `ios-map` : "android-map"}
+      name={Platform.OS === "ios" ? `md-globe` : "md-globe"}
     />
   )
 };
@@ -26,11 +26,11 @@ const ItemsStack = createStackNavigator({
 });
 
 ItemsStack.navigationOptions = {
-  tabBarLabel: "Items",
+  tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-list" : "md-link"}
+      name={Platform.OS === "ios" ? "md-list" : "md-link"}
     />
   )
 };
@@ -40,11 +40,11 @@ const ProfileStack = createStackNavigator({
 });
 
 ProfileStack.navigationOptions = {
-  tabBarLabel: "Profile",
+  tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-list" : "md-link"}
+      name={Platform.OS === "ios" ? "ios-person" : "md-person"}
     />
   )
 };
@@ -52,5 +52,5 @@ ProfileStack.navigationOptions = {
 export default createBottomTabNavigator({
   MapStack,
   ItemsStack,
-  ProfileScreen
+  ProfileStack
 });

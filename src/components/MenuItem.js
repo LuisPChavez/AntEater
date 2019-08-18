@@ -12,11 +12,12 @@ export class MenuItem extends Component {
             width: Dimensions.get("window").width - 40,
             flexDirection: "row",
             borderRadius: 20,
-            backgroundColor: "#F7F7F7",
+            backgroundColor: "#F2F2F2",
             shadowColor: "black",
             shadowRadius: 5,
             shadowOpacity: 0.1,
-            shadowOffset: {height: 2}
+            shadowOffset: {height: 2},
+            marginTop: 15
           }}
         >
           <View
