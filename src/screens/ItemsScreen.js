@@ -1,31 +1,50 @@
 import React from "react";
-import {ScrollView, StyleSheet, View, TextInput} from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  TextInput,
+  SafeAreaView,
+  Text
+} from "react-native";
 import {MenuItem} from "../components/MenuItem";
 
 export default class ItemsScreen extends React.Component {
   static navigationOptions = {
-    headerTitle: "LOGO"
+    header: null
   };
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: "#FCFCFC"}}>
-        <View style={{justifyContent: "center", alignItems: "center"}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: "#E8E8E8"}}>
+        <Text
+          style={{
+            fontSize: 28,
+            fontFamily: "Avenir Next",
+            fontWeight: "600",
+            marginLeft: 40,
+            marginTop: 20
+          }}
+        >
+          Items
+        </Text>
+        {/* <View style={{justifyContent: "center", alignItems: "center"}}>
           <TextInput
             style={{
               width: 270,
               height: 50,
-              borderWidth: 0.2,
+              borderWidth: 0.1,
               borderColor: "black",
               marginTop: 15,
               padding: 10,
-              fontSize: 17,
               backgroundColor: "white",
-              borderRadius: 4
+              borderRadius: 14,
+              fontFamily: "Avenir Next",
+              fontSize: 20
             }}
-            placeholder="🔍  Search"
+            placeholder="  Search"
             clearButtonMode="always"
           />
-        </View>
+        </View> */}
         <ScrollView style={styles.container}>
           <MenuItem
             title={"5$ Banh Mi"}
@@ -34,7 +53,7 @@ export default class ItemsScreen extends React.Component {
             location={"Ring Road"}
           />
         </ScrollView>
-      </View>
+      </SafeAreaView>
     );
   }
 }
