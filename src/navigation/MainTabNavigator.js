@@ -1,17 +1,13 @@
 import React from "react";
 import {Platform} from "react-native";
-import {createStackNavigator, createBottomTabNavigator} from "react-navigation";
+import {createBottomTabNavigator, createAppContainer} from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
 import MapScreen from "../screens/HomeScreen";
 import ItemsScreen from "../screens/ItemsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 
-const MapStack = createStackNavigator({
-  Map: MapScreen
-});
-
-MapStack.navigationOptions = {
+MapScreen.navigationOptions = {
   tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
@@ -21,11 +17,7 @@ MapStack.navigationOptions = {
   )
 };
 
-const ItemsStack = createStackNavigator({
-  Items: ItemsScreen
-});
-
-ItemsStack.navigationOptions = {
+ItemsScreen.navigationOptions = {
   tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
@@ -35,11 +27,7 @@ ItemsStack.navigationOptions = {
   )
 };
 
-const ProfileStack = createStackNavigator({
-  Profile: ProfileScreen
-});
-
-ProfileStack.navigationOptions = {
+ProfileScreen.navigationOptions = {
   tabBarLabel: " ",
   tabBarIcon: ({focused}) => (
     <TabBarIcon
@@ -49,8 +37,10 @@ ProfileStack.navigationOptions = {
   )
 };
 
-export default createBottomTabNavigator({
-  MapStack,
-  ItemsStack,
-  ProfileStack
-});
+export default createAppContainer(
+  createBottomTabNavigator({
+    MapScreen,
+    ItemsScreen,
+    ProfileScreen
+  })
+);
