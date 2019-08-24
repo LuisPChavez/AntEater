@@ -5,7 +5,8 @@ import {
   View,
   TextInput,
   SafeAreaView,
-  Text
+  Text,
+  ActivityIndicator
 } from "react-native";
 import {MenuItem} from "../components/MenuItem";
 
@@ -22,10 +23,12 @@ function Items() {
     }
   `);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <ActivityIndicator />;
+  if (error) return <Text>Error :(</Text>;
 
-  console.log(data);
+  return data.allOrganizations.map(({name, email}) => (
+    <MenuItem title={name} location={email} key={name} />
+  ));
 }
 
 export default class ItemsScreen extends React.Component {
@@ -33,29 +36,27 @@ export default class ItemsScreen extends React.Component {
     header: null
   };
   render() {
-    Items();
     var data = require("../data");
 
-    allEvents = [];
+    // allEvents = [];
 
-    data.data.map(org => {
-      org.events.map(eventItem => <MenuItem title={eventItem.name} />);
-    });
+    // data.data.map(org => {
+    //   org.events.map(eventItem => <MenuItem title={eventItem.name} />);
+    // });
 
-    for (let i = 0; i < data.data.length; ++i) {
-      for (let j = 0; j < data.data[i].events.length; ++j) {
-        allEvents.push(
-          <MenuItem
-            title={data.data[i].events[j].title}
-            pricing={data.data[i].events[j].pricing}
-            org={data.data[i].name}
-            location={data.data[i].events[j].location}
-            key={data.data[i].events[j].key}
-          />
-        );
-      }
-    }
-    console.log(allEvents);
+    // for (let i = 0; i < data.data.length; ++i) {
+    //   for (let j = 0; j < data.data[i].events.length; ++j) {
+    //     allEvents.push(
+    //       <MenuItem
+    //         title={data.data[i].events[j].title}
+    //         pricing={data.data[i].events[j].pricing}
+    //         org={data.data[i].name}
+    //         location={data.data[i].events[j].location}
+    //         key={data.data[i].events[j].key}
+    //       />
+    //     );
+    //   }
+    // }
 
     return (
       <SafeAreaView style={{flex: 1, backgroundColor: "#DEE2E2"}}>
@@ -88,10 +89,11 @@ export default class ItemsScreen extends React.Component {
             clearButtonMode="always"
           />
         </View> */}
+        <Items />
         <ScrollView style={styles.container}>
-          {allEvents.map(item => {
+          {/* {allEvents.map(item => {
             return item;
-          })}
+          })} */}
         </ScrollView>
       </SafeAreaView>
     );
