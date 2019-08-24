@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://wg-ctm.emachta.anteater.exp.direct",
+  "packagerNgrokUrl": "https://packager.wg-ctm.emachta.anteater.exp.direct",
+  "ngrokPid": 40553
 }

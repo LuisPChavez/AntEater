@@ -10,26 +10,30 @@ import {
 import {MenuItem} from "../components/MenuItem";
 
 import {useQuery} from "@apollo/react-hooks";
-import ApolloClient, {gql} from "apollo-boost";
+import {gql} from "apollo-boost";
+
+function Items() {
+  const {loading, error, data} = useQuery(gql`
+    {
+      allOrganizations {
+        name
+        email
+      }
+    }
+  `);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  console.log(data);
+}
+
 export default class ItemsScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
   render() {
-    const {loading, error, data2} = useQuery(gql`
-      {
-        allOrganizations {
-          name
-          email
-        }
-      }
-    `);
-
-    if (loading) return <Text>Loading...</Text>;
-    if (error) return <Text>Error :(</Text>;
-
-    console.log(data2);
-
+    Items();
     var data = require("../data");
 
     allEvents = [];

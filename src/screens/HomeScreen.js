@@ -1,6 +1,6 @@
 import React from "react";
 import {Text, View} from "react-native";
-import {MapView} from "expo";
+import MapView from "react-native-maps";
 
 export default class MapScreen extends React.Component {
   static navigationOptions = {
