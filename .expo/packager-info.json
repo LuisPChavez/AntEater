@@ -1,3 +1,9 @@
 {
-  "devToolsPort": 19002
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 4328,
+  "expoServerNgrokUrl": "https://wg-ctm.luischavez.anteater.exp.direct",
+  "packagerNgrokUrl": "https://packager.wg-ctm.luischavez.anteater.exp.direct",
+  "ngrokPid": 8568
 }
