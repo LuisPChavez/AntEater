@@ -1,11 +1,12 @@
-import React, {Component} from "react";
-import {Text, View, TouchableOpacity, Image, Dimensions} from "react-native";
+import React, { Component } from "react";
+import { Text, View, TouchableOpacity, Image, Dimensions } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 export class MenuItem extends Component {
   render() {
-    const {title, pricing, org, location} = this.props;
+    const { title, pricing, org, location } = this.props;
     return (
-      <View style={{justifyContent: "center", alignItems: "center"}}>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
         <TouchableOpacity
           style={{
             height: 100,
@@ -16,12 +17,12 @@ export class MenuItem extends Component {
             shadowColor: "black",
             shadowRadius: 5,
             shadowOpacity: 0.1,
-            shadowOffset: {height: 2},
+            shadowOffset: { height: 2 },
             marginTop: 15
           }}
         >
           <View
-            style={{flex: 1, justifyContent: "center", alignItems: "center"}}
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
             <Image
               source={require("../assets/banhmi.jpg")}
@@ -35,7 +36,7 @@ export class MenuItem extends Component {
               }}
             />
           </View>
-          <View style={{flex: 2}}>
+          <View style={{ flex: 2 }}>
             <View
               style={{
                 flexDirection: "row",

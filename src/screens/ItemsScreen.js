@@ -8,13 +8,13 @@ import {
   Text,
   ActivityIndicator
 } from "react-native";
-import {MenuItem} from "../components/MenuItem";
+import { MenuItem } from "../components/MenuItem";
 
-import {useQuery} from "@apollo/react-hooks";
-import {gql} from "apollo-boost";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 function Items() {
-  const {loading, error, data} = useQuery(gql`
+  const { loading, error, data } = useQuery(gql`
     {
       allOrganizations {
         name
@@ -26,7 +26,7 @@ function Items() {
   if (loading) return <ActivityIndicator />;
   if (error) return <Text>Error :(</Text>;
 
-  return data.allOrganizations.map(({name, email}) => (
+  return data.allOrganizations.map(({ name, email }) => (
     <MenuItem title={name} location={email} key={name} />
   ));
 }
@@ -35,6 +35,7 @@ export default class ItemsScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
+
   render() {
     var data = require("../data");
 
@@ -59,7 +60,7 @@ export default class ItemsScreen extends React.Component {
     // }
 
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: "#DEE2E2"}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#DEE2E2" }}>
         <Text
           style={{
             fontSize: 28,

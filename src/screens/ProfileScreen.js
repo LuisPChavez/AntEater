@@ -1,13 +1,14 @@
-import React, {PureComponent} from "react";
-import {Text, View, SafeAreaView} from "react-native";
+import React, { PureComponent } from "react";
+import { Text, View, SafeAreaView } from "react-native";
 
 export default class ProfileScreen extends PureComponent {
   static navigationOptions = {
     header: null
   };
+
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: "#DEE2E2"}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#DEE2E2" }}>
         <Text
           style={{
             fontSize: 28,
@@ -19,7 +20,7 @@ export default class ProfileScreen extends PureComponent {
         >
           Profile
         </Text>
-        <View style={{justifyContent: "center", alignItems: "center"}}>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
           <View
             style={{
               width: 150,
