@@ -10,34 +10,49 @@ import {
 } from "react-native";
 import { MenuItem } from "../components/MenuItem";
 
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-function Items() {
+function Items(navigation) {
   const { loading, error, data } = useQuery(gql`
     {
       allOrganizations {
         name
         email
+        items {
+          _id
+          price
+          name
+          description
+          locationName
+          coordinateX
+          coordinateY
+        }
       }
     }
   `);
 
-  if (loading) return <ActivityIndicator />;
+  if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error :(</Text>;
 
-  return data.allOrganizations.map(({ name, email }) => (
-    <MenuItem title={name} location={email} key={name} />
-  ));
+  return data.allOrganizations.map(element => {
+    return (
+      <MenuItem
+        title={element.name}
+        org={element.org}
+        key={Math.random()}
+        navigation={navigation}
+      ></MenuItem>
+    );
+  });
 }
-
 export default class ItemsScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
 
   render() {
-    var data = require("../data");
+    // var data = require('../data');
 
     // allEvents = [];
 
@@ -90,7 +105,7 @@ export default class ItemsScreen extends React.Component {
             clearButtonMode="always"
           />
         </View> */}
-        <Items />
+        <Items navigation={this.props.navigation} />
         <ScrollView style={styles.container}>
           {/* {allEvents.map(item => {
             return item;

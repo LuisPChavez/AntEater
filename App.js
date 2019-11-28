@@ -4,9 +4,12 @@ import React, { Component } from "react";
 import ApolloClient, { gql } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import * as Font from "expo-font";
+import EditScreen from "./src/screens/EditScreen";
+import AddItemsScreen from "./src/screens/AddItemsScreen";
+import { createAppContainer, createStackNavigator } from "react-navigation";
 
 const client = new ApolloClient({
-  uri: "http://174.77.34.4:4000"
+  uri: "http://192.168.1.149:4000"
 });
 
 class App extends Component {
@@ -17,9 +20,16 @@ class App extends Component {
   }
 
   render() {
+    const StackNav = createAppContainer(
+      createStackNavigator({
+        Main: MainTabNavigator,
+        Edit: EditScreen,
+        AddItems: AddItemsScreen
+      })
+    );
     return (
       <ApolloProvider client={client}>
-        <MainTabNavigator />
+        <StackNav />
       </ApolloProvider>
     );
   }
