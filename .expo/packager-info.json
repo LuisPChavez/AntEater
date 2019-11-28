@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 11305,
+  "packagerPid": 12690,
   "expoServerNgrokUrl": "https://wg-ctm.anonymous.anteater.exp.direct",
   "packagerNgrokUrl": "https://packager.wg-ctm.anonymous.anteater.exp.direct",
-  "ngrokPid": 11316,
+  "ngrokPid": 12711,
   "webpackServerPort": null
 }

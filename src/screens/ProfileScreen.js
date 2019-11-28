@@ -4,12 +4,50 @@ import {
   View,
   SafeAreaView,
   TextInput,
-  ScrollView,
   FlatList,
   TouchableOpacity
 } from "react-native";
-
+import { gql } from "apollo-boost";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { MenuItem } from "../components/MenuItem";
+
+function Items() {
+  const { loading, error, data } = useQuery(
+    gql`
+      query($organizationId: String!) {
+        getAllItemsFromOneOrganization(organizationId: $organizationId) {
+          name
+          price
+          coordinateX
+          coordinateY
+          description
+          locationName
+        }
+      }
+    `,
+    {
+      variables: {
+        organizationId: "5d747f60b8c7d724bc344a59"
+      }
+    }
+  );
+
+  if (loading) return <Text>Loading...</Text>;
+  if (error) return <Text>Error :(</Text>;
+
+  console.log(data.getAllItemsFromOneOrganization);
+  return data.getAllItemsFromOneOrganization.map(item => {
+    return (
+      <View>
+        <Text>{item.name}</Text>
+        <Text>{item.locationName}</Text>
+        <Text>{item.price}</Text>
+        <Text>{item.coordinateX}</Text>
+        <Text>{item.coordinateY}</Text>
+      </View>
+    );
+  });
+}
 
 export default class ProfileScreen extends PureComponent {
   static navigationOptions = {
@@ -25,33 +63,6 @@ export default class ProfileScreen extends PureComponent {
       onSelect: false
     };
   }
-
-  componentDidMount() {
-    this.loadData();
-  }
-
-  loadData = () => {
-    var data = require("../data");
-
-    allEvents = [];
-
-    for (let i = 0; i < data.data.length; ++i) {
-      for (let j = 0; j < data.data[i].events.length; ++j) {
-        if (this.state.email === data.data[i].email)
-          allEvents.push(
-            <MenuItem
-              title={data.data[i].events[j].title}
-              pricing={data.data[i].events[j].pricing}
-              org={data.data[i].name}
-              location={data.data[i].events[j].location}
-              key={data.data[i].events[j].key}
-              onSelect={this.state.onSelect}
-              navigation={this.props.navigation}
-            />
-          );
-      }
-    }
-  };
 
   signOut = () => {
     this.setState({ signedIn: false });
@@ -245,6 +256,7 @@ export default class ProfileScreen extends PureComponent {
             >
               Your Items
             </Text>
+
             <TouchableOpacity
               onPress={() => {
                 this.setState({ onSelect: !this.state.onSelect });
@@ -253,6 +265,7 @@ export default class ProfileScreen extends PureComponent {
               <Text style={{ color: "blue" }}>Select</Text>
             </TouchableOpacity>
           </View>
+          <Items />
           <FlatList
             data={allEvents}
             renderItem={({ item, index, separators }) => <View>{item}</View>}
